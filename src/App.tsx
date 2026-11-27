@@ -15,6 +15,9 @@ import { BookCover3D } from './components/BookCover3D';
 import { CartCheckoutDrawer } from './components/CartCheckoutDrawer';
 import { RecentSalesToast } from './components/RecentSalesToast';
 import { Footer } from './components/Footer';
+import reviewerRahulImage from './assets/images/reviewer_rahul_verma_1795762763568.jpg';
+import reviewerRiyaImage from './assets/images/reviewer_riya_sharma_1795762765996.jpg';
+import reviewerAmitImage from './assets/images/reviewer_amit_kumar_1795762766879.jpg';
 
 const EBOOK_BENEFITS = [
   '₹0 से शुरुआत करने का स्टेप-बाय-स्टेप एक्शन प्लान',
@@ -50,7 +53,7 @@ const READER_REVIEWS = [
     role: 'College Student, Lucknow',
     initials: 'RV',
     rating: 5,
-    imageUrl: '/src/assets/images/reviewer_rahul_verma_1795762763568.jpg',
+    imageUrl: reviewerRahulImage,
     alt: 'Rahul Verma, College Student from Lucknow',
   },
   {
@@ -61,7 +64,7 @@ const READER_REVIEWS = [
     role: 'बी.कॉम स्टूडेंट, जयपुर',
     initials: 'RS',
     rating: 5,
-    imageUrl: '/src/assets/images/reviewer_riya_sharma_1795762765996.jpg',
+    imageUrl: reviewerRiyaImage,
     alt: 'Riya Sharma, B.Com Student from Jaipur',
   },
   {
@@ -72,7 +75,7 @@ const READER_REVIEWS = [
     role: 'फ्रीलांसर, पटना',
     initials: 'AK',
     rating: 5,
-    imageUrl: '/src/assets/images/reviewer_amit_kumar_1795762766879.jpg',
+    imageUrl: reviewerAmitImage,
     alt: 'Amit Kumar, Freelancer from Patna',
   },
 ];

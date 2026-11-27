@@ -1,7 +1,6 @@
 import React from 'react';
 import { Book } from '../types/bookstore';
-
-const INR_500_NOTE_IMAGE = '/src/assets/images/inr_500_note.jpg';
+import inr500NoteImage from '../assets/images/inr_500_note.jpg';
 
 const NOTE_PLACEMENTS = [
   { id: 'left-top', transform: 'translate(16 48) rotate(-24)' },
@@ -193,7 +192,7 @@ export const BookCover3D: React.FC<BookCover3DProps> = ({
                     fill="#C6C5BA"
                   />
                   <image
-                    href={INR_500_NOTE_IMAGE}
+                    href={inr500NoteImage}
                     x="0"
                     y="0"
                     width="62"

@@ -49,8 +49,9 @@ GitHub Pages deployments are built with Vite by the workflow in `.github/workflo
 ```text
 .
 ├── public/
-│   └── assets/                 # Static images and the downloadable PDF
+│   └── assets/pdf/             # Downloadable PDF
 ├── src/
+│   ├── assets/images/          # Book-cover and reader-review images
 │   ├── components/             # Book preview, checkout, order tracking, sharing
 │   ├── data/books.ts           # Book details, chapter content, and reviews
 │   ├── types/bookstore.ts      # Storefront domain types
@@ -68,8 +69,8 @@ GitHub Pages deployments are built with Vite by the workflow in `.github/workflo
 ## Catalog and assets
 
 - Update the book, its ten chapters, sample excerpt, and reviews in `src/data/books.ts`.
-- The guide PDF is referenced by `FLAGSHIP_PDF_URL` in that file and served from `public/assets/aistudio/`. Keep the URL and the actual asset path in sync.
-- Vite copies `src/assets/` into the production output for existing root-relative asset references. Preserve the `copy-unbundled-src-assets` plugin in `vite.config.ts` if those assets are used.
+- The guide PDF is referenced by `FLAGSHIP_PDF_URL` in that file and served from `public/assets/pdf/`. Keep the URL and the actual asset path in sync.
+- Import images from `src/assets/images/` so Vite emits deployment-base-aware URLs, including on GitHub Pages. Vite also copies `src/assets/` into the output for legacy root-relative references.
 - The `@` import alias points to the project root.
 
 ## Configuration
