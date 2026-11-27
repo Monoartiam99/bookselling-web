@@ -1,0 +1,6 @@
+{
+  "name": "KamaoMoney Books",
+  "description": "Minimalist digital and print bookstore for practical online income, digital skills, and financial independence blueprints with personalized recommendations, secure checkout, and real-time order tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
