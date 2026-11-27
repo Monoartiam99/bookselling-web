@@ -1,6 +1,15 @@
 import React from 'react';
 import { Book } from '../types/bookstore';
 
+const INR_500_NOTE_IMAGE = '/assets/aistudio/images__7__3b371c4b.jpg';
+
+const NOTE_PLACEMENTS = [
+  { id: 'left-top', transform: 'translate(16 48) rotate(-24)' },
+  { id: 'left-bottom', transform: 'translate(15 74) rotate(13)' },
+  { id: 'right-top', transform: 'translate(146 24) rotate(22)' },
+  { id: 'right-bottom', transform: 'translate(144 76) rotate(-14)' },
+] as const;
+
 interface BookCover3DProps {
   book?: Book;
   size?: 'sm' | 'md' | 'lg';
@@ -157,40 +166,53 @@ export const BookCover3D: React.FC<BookCover3DProps> = ({
                   <stop offset="50%" stopColor="#CFA344" />
                   <stop offset="100%" stopColor="#8A6820" />
                 </linearGradient>
-                <linearGradient id="noteGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#D9D3C1" />
-                  <stop offset="100%" stopColor="#9FA69B" />
-                </linearGradient>
                 <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#143D2D" />
                   <stop offset="100%" stopColor="#081C14" />
                 </linearGradient>
+                <filter id="noteShadow" x="-15%" y="-15%" width="130%" height="140%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="1.8" floodColor="#04120C" floodOpacity="0.52" />
+                </filter>
+                <clipPath id="inr500NoteClip">
+                  <rect x="0" y="0" width="62" height="27" rx="1.8" />
+                </clipPath>
               </defs>
 
               {/* Ambient glow */}
               <ellipse cx="110" cy="66" rx="95" ry="56" fill="url(#coverGlow)" />
 
-              {/* Left fanned currency notes */}
-              <g transform="translate(26 42) rotate(-24)">
-                <rect x="0" y="0" width="52" height="28" rx="3" fill="url(#noteGrad)" stroke="#5E6E66" strokeWidth="1" />
-                <rect x="5" y="4" width="42" height="20" rx="2" fill="none" stroke="#6E7E76" strokeWidth="0.7" />
-                <text x="26" y="18" textAnchor="middle" fill="#2A4036" fontSize="11" fontWeight="700">₹</text>
-              </g>
-              <g transform="translate(20 76) rotate(14)">
-                <rect x="0" y="0" width="48" height="26" rx="3" fill="#C7C2B2" stroke="#5A6A62" strokeWidth="1" />
-                <text x="24" y="17" textAnchor="middle" fill="#273D34" fontSize="10" fontWeight="700">₹500</text>
-              </g>
-
-              {/* Right fanned currency notes */}
-              <g transform="translate(148 26) rotate(22)">
-                <rect x="0" y="0" width="54" height="28" rx="3" fill="url(#noteGrad)" stroke="#5E6E66" strokeWidth="1" />
-                <rect x="5" y="4" width="44" height="20" rx="2" fill="none" stroke="#6E7E76" strokeWidth="0.7" />
-                <text x="27" y="18" textAnchor="middle" fill="#2A4036" fontSize="10" fontWeight="700">₹500</text>
-              </g>
-              <g transform="translate(154 72) rotate(-14)">
-                <rect x="0" y="0" width="48" height="26" rx="3" fill="#CFC8B5" stroke="#5E6E66" strokeWidth="1" />
-                <text x="24" y="17" textAnchor="middle" fill="#273D34" fontSize="10" fontWeight="700">₹</text>
-              </g>
+              {/* Four identical-size original ₹500 notes fanned around the smartphone */}
+              {NOTE_PLACEMENTS.map((note) => (
+                <g key={note.id} transform={note.transform} filter="url(#noteShadow)">
+                  <rect
+                    x="0"
+                    y="0"
+                    width="62"
+                    height="27"
+                    rx="1.8"
+                    fill="#C6C5BA"
+                  />
+                  <image
+                    href={INR_500_NOTE_IMAGE}
+                    x="0"
+                    y="0"
+                    width="62"
+                    height="27"
+                    preserveAspectRatio="xMidYMid slice"
+                    clipPath="url(#inr500NoteClip)"
+                  />
+                  <rect
+                    x="0.3"
+                    y="0.3"
+                    width="61.4"
+                    height="26.4"
+                    rx="1.6"
+                    fill="none"
+                    stroke="rgba(255,255,255,0.24)"
+                    strokeWidth="0.6"
+                  />
+                </g>
+              ))}
 
               {/* Gold Rupee Coins */}
               <g>
