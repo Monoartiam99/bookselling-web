@@ -1,7 +1,7 @@
 import { Book, ChapterTrack, RoadmapPhase } from '../types/bookstore';
 
 export const FLAGSHIP_PDF_URL =
-  '/assets/aistudio/THE_COMPLETE_EARN_MONEY_Online_Master_Ebook_Manuscript_150_Pages_e94c27fb.pdf';
+  `${import.meta.env.BASE_URL}assets/pdf/THE_COMPLETE_EARN_MONEY_Online_Master_Ebook_Manuscript_150_Pages_e94c27fb.pdf`;
 
 export const FLAGSHIP_BOOK: Book = {
   id: 'complete-earn-money-online',

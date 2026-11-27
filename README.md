@@ -33,6 +33,8 @@ npm run dev
 
 Open the local URL printed by Vite (the development server is configured for port `3000`).
 
+GitHub Pages deployments are built with Vite by the workflow in `.github/workflows/vite-gh-pages.yml`.
+
 ## Available scripts
 
 | Command | Description |
