@@ -41,6 +41,42 @@ const BOOK_PILLARS = [
   },
 ];
 
+const READER_REVIEWS = [
+  {
+    id: 'rahul-verma',
+    quote:
+      'विश्वास नहीं हो रहा था कि ₹99 में इतनी सटीक जानकारी मिलेगी। Action Plan सच में बहुत आसान है!',
+    name: 'Rahul Verma',
+    role: 'College Student, Lucknow',
+    initials: 'RV',
+    rating: 5,
+    imageUrl: '/src/assets/images/reviewer_rahul_verma_1795762763568.jpg',
+    alt: 'Rahul Verma, College Student from Lucknow',
+  },
+  {
+    id: 'riya-sharma',
+    quote:
+      'इस बुक के प्रैक्टिकल आइडियाज़ और बिना इन्वेस्टमेंट वाले तरीके सच में असरदार हैं। पढ़ने के 2 हफ्ते बाद ही मेरी रेगुलर ऑनलाइन अर्निंग शुरू हो गई।',
+    name: 'रिया शर्मा',
+    role: 'बी.कॉम स्टूडेंट, जयपुर',
+    initials: 'RS',
+    rating: 5,
+    imageUrl: '/src/assets/images/reviewer_riya_sharma_1795762765996.jpg',
+    alt: 'Riya Sharma, B.Com Student from Jaipur',
+  },
+  {
+    id: 'amit-kumar',
+    quote:
+      'थैंक्स भाई! मैं इस बुक को पढ़ने के बाद महीने का ₹20-30k आसानी से कमा रहा हूँ। इसमें दिए गए स्टेप-बाय-स्टेप तरीके और प्रैक्टिकल टिप्स सच में बहुत काम के हैं।',
+    name: 'अमित कुमार',
+    role: 'फ्रीलांसर, पटना',
+    initials: 'AK',
+    rating: 5,
+    imageUrl: '/src/assets/images/reviewer_amit_kumar_1795762766879.jpg',
+    alt: 'Amit Kumar, Freelancer from Patna',
+  },
+];
+
 const FAQ_ITEMS = [
   {
     question: 'Is this suitable for beginners?',
@@ -102,6 +138,7 @@ export default function App() {
   const book = FLAGSHIP_BOOK;
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [failedAvatars, setFailedAvatars] = useState<Record<string, boolean>>({});
   const [remainingSeconds, setRemainingSeconds] = useState<number>(() =>
     getInitialRemainingSeconds()
   );
@@ -325,77 +362,61 @@ export default function App() {
           </div>
         </section>
 
-        {/* Reader Testimonial Card */}
-        <section className="mt-9 sm:mt-11">
-          <div className="rounded-2xl border border-[#E5DEC9] bg-[#FDFCF8] p-4 sm:p-5 shadow-[0_8px_24px_rgba(19,43,35,0.06)] flex items-center gap-4 sm:gap-5">
-            {/* Illustrated Portrait of Rahul Verma */}
-            <div className="h-[78px] w-[78px] sm:h-[92px] sm:w-[92px] shrink-0 overflow-hidden rounded-xl border border-[#E5DEC9] bg-[#DCE4DF]">
-              <svg
-                viewBox="0 0 100 100"
-                className="h-full w-full"
-                role="img"
-                aria-label="Rahul Verma"
-              >
-                <defs>
-                  <linearGradient id="bgOutdoor" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#D6E0D6" />
-                    <stop offset="55%" stopColor="#B8C7B8" />
-                    <stop offset="100%" stopColor="#8CA191" />
-                  </linearGradient>
-                  <linearGradient id="skinTone" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#D69C72" />
-                    <stop offset="100%" stopColor="#B87D55" />
-                  </linearGradient>
-                </defs>
-                {/* Soft campus bokeh background */}
-                <rect width="100" height="100" fill="url(#bgOutdoor)" />
-                <circle cx="18" cy="22" r="14" fill="#F2F6EE" opacity="0.45" />
-                <circle cx="84" cy="26" r="18" fill="#5D7364" opacity="0.28" />
-                {/* Shirt & Hoodie/Jacket + Backpack straps */}
-                <path d="M12 100 C15 78 28 70 50 70 C72 70 85 78 88 100 Z" fill="#2A3A48" />
-                <path d="M36 72 L50 96 L64 72 Z" fill="#E8ECEA" />
-                <path d="M24 76 L29 100 L35 100 L31 73 Z" fill="#1C242B" />
-                <path d="M76 76 L71 100 L65 100 L69 73 Z" fill="#1C242B" />
-                {/* Neck */}
-                <rect x="43" y="58" width="14" height="15" rx="5" fill="#B57A52" />
-                {/* Head */}
-                <ellipse cx="50" cy="43" rx="16.5" ry="20" fill="url(#skinTone)" />
-                {/* Ears */}
-                <ellipse cx="33.5" cy="44" rx="2.6" ry="4.5" fill="#BE845B" />
-                <ellipse cx="66.5" cy="44" rx="2.6" ry="4.5" fill="#BE845B" />
-                {/* Hair */}
-                <path
-                  d="M33 41 C32 26 40 19 51 19 C63 19 68 27 67 41 C65 33 61 29 52 29 C42 29 37 33 33 41 Z"
-                  fill="#1C1A19"
-                />
-                {/* Eyebrows & Eyes */}
-                <path d="M40 39 Q43.5 37.2 47 38.8" stroke="#1F1B18" strokeWidth="1.6" strokeLinecap="round" fill="none" />
-                <path d="M53 38.8 Q56.5 37.2 60 39" stroke="#1F1B18" strokeWidth="1.6" strokeLinecap="round" fill="none" />
-                <circle cx="43.5" cy="43" r="1.7" fill="#1E1815" />
-                <circle cx="56.5" cy="43" r="1.7" fill="#1E1815" />
-                {/* Nose */}
-                <path d="M50 43 L49 49.5 L51.5 50" stroke="#9B6340" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                {/* Subtle stubble & warm smile */}
-                <path d="M38 51 C41 60 59 60 62 51" fill="#4B3427" opacity="0.16" />
-                <path d="M44 53 Q50 58 56 53" stroke="#FFFFFF" strokeWidth="2.4" strokeLinecap="round" fill="none" />
-                <path d="M43.5 52.8 Q50 57.5 56.5 52.8" stroke="#6E3E29" strokeWidth="1" strokeLinecap="round" fill="none" />
-              </svg>
-            </div>
+        {/* Reader Reviews Section (3-Column Grid) */}
+        <section
+          id="reviews"
+          className="mt-9 sm:mt-11 scroll-mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch"
+          aria-label="Reader Reviews"
+        >
+          {READER_REVIEWS.map((review) => (
+            <article
+              key={review.id}
+              className="rounded-2xl border border-[#E5DEC9] bg-[#FDFCF8] p-4 sm:p-5 shadow-[0_8px_24px_rgba(19,43,35,0.06)] flex flex-col justify-between h-full"
+            >
+              <div>
+                {/* Top: Reviewer Portrait & Rating */}
+                <div className="flex items-center justify-between gap-3">
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-[#E5DEC9] bg-[#EAF4EE] flex items-center justify-center">
+                    {!failedAvatars[review.id] ? (
+                      <img
+                        src={review.imageUrl}
+                        alt={review.alt}
+                        referrerPolicy="no-referrer"
+                        onError={() =>
+                          setFailedAvatars((prev) => ({ ...prev, [review.id]: true }))
+                        }
+                        className="h-full w-full object-cover object-top"
+                      />
+                    ) : (
+                      <span className="text-base font-extrabold text-[#154A34] tracking-tight">
+                        {review.initials}
+                      </span>
+                    )}
+                  </div>
 
-            {/* Quote & Author */}
-            <div className="min-w-0 flex-1">
-              <p className="text-[15px] sm:text-[17px] font-bold leading-[1.45] text-[#132B23]">
-                &ldquo;विश्वास नहीं हो रहा था कि ₹99 में इतनी सटीक जानकारी मिलेगी। Action Plan सच में बहुत आसान है!&rdquo;
-              </p>
-              <p className="mt-2 flex flex-wrap items-center gap-1.5 text-[13px] sm:text-[14px] font-semibold text-[#2E423A]">
-                <span>- Rahul Verma (College Student, Lucknow)</span>
-                <span className="inline-flex items-center gap-0.5 text-[#132B23] font-bold tabular-nums">
-                  <span>5</span>
-                  <Star className="h-3.5 w-3.5 fill-[#132B23] text-[#132B23]" aria-hidden="true" />
-                </span>
-              </p>
-            </div>
-          </div>
+                  <span className="inline-flex items-center gap-1 text-[13px] font-bold text-[#132B23] tabular-nums">
+                    <span>{review.rating}</span>
+                    <Star className="h-3.5 w-3.5 fill-[#F0B429] text-[#F0B429]" aria-hidden="true" />
+                  </span>
+                </div>
+
+                {/* Quote */}
+                <p className="mt-3.5 text-[14px] sm:text-[14.5px] font-bold leading-[1.55] text-[#132B23]">
+                  &ldquo;{review.quote}&rdquo;
+                </p>
+              </div>
+
+              {/* Author Attribution */}
+              <div className="mt-4 pt-3 border-t border-[#EFEADF]">
+                <p className="text-[13.5px] font-bold text-[#132B23] leading-snug">
+                  {review.name}
+                </p>
+                <p className="mt-0.5 text-[12px] font-medium text-[#465B52] leading-snug">
+                  {review.role}
+                </p>
+              </div>
+            </article>
+          ))}
         </section>
 
         {/* Simple Collapsible FAQ Section */}
