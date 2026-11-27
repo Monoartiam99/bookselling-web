@@ -1,7 +1,7 @@
 import React from 'react';
 import { Book } from '../types/bookstore';
 
-const INR_500_NOTE_IMAGE = '/assets/aistudio/images__7__3b371c4b.jpg';
+const INR_500_NOTE_IMAGE = '/src/assets/images/inr_500_note.jpg';
 
 const NOTE_PLACEMENTS = [
   { id: 'left-top', transform: 'translate(16 48) rotate(-24)' },
